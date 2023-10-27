@@ -1,33 +1,43 @@
+import java.awt.*;
 import java.util.Scanner;
 
 public class Game {
+
+    Scanner scanner = new Scanner(System.in);
 
     public Game(){}
 
     public void Play(){
         boolean gameOn = true;
-        Scanner scanner = new Scanner(System.in);
+
         Board board = new Board();
         while(gameOn){
-            System.out.print("X: ");
-            int x = scanner.nextInt();
-            System.out.print(" Y: ");
-            int y = scanner.nextInt();
 
-            boolean hit = board.Shoot(x,y);
+            board.DrawBoard();
+            Point p = GetPointFromUser();
+
+            boolean hit = board.Shoot(p.y, p.x);
+
             if(hit){
-                System.out.println("Hit!");
                 if(board.IsAllShipsDestroyed()){
                     gameOn = false;
                     System.out.println("You Won");
+                    board.DrawBoard();
                 }
 
             }
             else
                 System.out.println("Miss!");
-
         }
+    }
 
+    private Point GetPointFromUser(){
+        System.out.print("X: ");
+        int x = scanner.nextInt();
+        System.out.print("Y: ");
+        int y = scanner.nextInt();
+
+        return new Point(x-1,y-1);
     }
 
 }

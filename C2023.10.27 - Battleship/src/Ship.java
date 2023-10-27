@@ -13,14 +13,13 @@ public class Ship implements IDestroyed{
         }
 
     }
-    public boolean HitTest(int x, int y){
-        x -= 1;
-        y -= 1;
-        if(x < 0 || x>= position.length) return false;
-        if(y < 0 || y>= position.length) return false;
+    public boolean HitTest(int row, int col){
 
-        if(position[x][y] == 1) {
-            position[x][y] = -1;
+        if(row < 0 || row>= position.length) return false;
+        if(col < 0 || col>= position.length) return false;
+
+        if(position[row][col] == 1) {
+            position[row][col] = -1;
             ++hitCounter;
             return true;
         }
