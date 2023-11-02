@@ -50,10 +50,10 @@ public class Board {
                    ships.remove(s);
                    System.out.println("Sunken!");
                }
-               else{
-                   UpdateBoard(row,col, 1);
-               }
+               else
                    System.out.println("Hit!");
+
+               UpdateBoard(row,col, 1);
                return true;
            }
            else
