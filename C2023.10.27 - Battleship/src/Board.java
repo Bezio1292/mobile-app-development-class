@@ -42,6 +42,8 @@ public class Board {
    }
 
    public boolean Shoot(int row, int col){
+       if(boardArray[row][col]!=0) return false;
+
        for (Ship s: ships) {
            if(s.HitTest(row,col)){
                if(s.IsDestroyed()){
